@@ -40,7 +40,7 @@ def Game(snake,i,js):
 
         if snake.score < snake.score+5 and snake.steps>5000:
             snake.deaths +=3
-            stime=time.time()
+            
             run=False
 
         b = snake.moreche_ki()   
@@ -48,8 +48,8 @@ def Game(snake,i,js):
         snake.update_score(time.time()-stime)
 
         title_font = pygame.font.SysFont("comicsans", 20)
-        title_label = title_font.render(f'{str(snake.score)} sID: {js}', 1, (255,255,255))
-        _label = title_font.render(f'{str(snake.steps)} Gen {i+1}', 1, (255,255,255))
+        title_label = title_font.render(f'{str(snake.score)} sID: {js}  Gen {i+1}', 1, (255,255,255))
+        _label = title_font.render(f'{str(snake.steps)}', 1, (255,255,255))
         screen.blit(title_label,(10,10))
         screen.blit(_label,(200,10))
         

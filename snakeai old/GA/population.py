@@ -6,11 +6,15 @@ class Population:
     def __init__(self,numpop=100):
         self.numpop=numpop
         self.pop =  [Snake() for _ in range(self.numpop)]
+        self.prev_score=0
 
     def selection(self):
         self.pop = sorted(self.pop,key=lambda x:x.SCORE,reverse=True)
         # return best_snakes
-        self.pop[0].brain.save(f'{str(self.pop[0].SCORE)}.pth')
+        if self.prev_score<self.pop[0].SCORE:
+            self.pop[0].brain.save()
+            self.prev_score=self.pop[0].SCORE
+
         best_snake = self.pop[0]
   
 
