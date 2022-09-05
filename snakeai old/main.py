@@ -1,5 +1,6 @@
 from GA.population import Population
 from game import Game
+import torch
 
 # _____________________________________________________________________________________
 '''
@@ -23,6 +24,9 @@ def check(popula):
 
 def main():
     snakes = Population()
+    for i in snakes.pop:
+        i.brain.load_state_dict(torch.load('D:\GitHub\snake ai\model\model.pth'))
+
     for i in range(1000):
         score__ =0
         for j,snake in enumerate(snakes.pop):

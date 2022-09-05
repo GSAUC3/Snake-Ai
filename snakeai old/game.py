@@ -15,7 +15,7 @@ def Game(snake,i,js):
     __score__= 0
     pygame.init()
     screen = pygame.display.set_mode((WIDTH,HEIGHT))
-    # clock = pygame.time.Clock()
+    clock = pygame.time.Clock()
     run=True
     stime = time.time()
     t=1
@@ -35,7 +35,7 @@ def Game(snake,i,js):
         # eating the fruit logic
         if collide(snake.nagin[-1],fruit)<5:
             snake.score+=1
-            snake.steps+=100
+            snake.steps+=200
             snake.nagin.append(block(fruit.x,fruit.y))
             fruit.reset(screen)
 
@@ -53,7 +53,7 @@ def Game(snake,i,js):
         screen.blit(title_label,(10,10))
         screen.blit(_label,(200,10))
         
-        # clock.tick(60)
+        clock.tick(60)
             
         if b or run==False:
             __score__ = snake.score

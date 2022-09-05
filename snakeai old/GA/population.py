@@ -12,7 +12,7 @@ class Population:
         self.pop = sorted(self.pop,key=lambda x:x.SCORE,reverse=True)
         # return best_snakes
         if self.prev_score<self.pop[0].SCORE:
-            self.pop[0].brain.save()
+            self.pop[0].brain.save(f'model{self.pop[0].SCORE}.pth')
             self.prev_score=self.pop[0].SCORE
 
         best_snake = self.pop[0]
