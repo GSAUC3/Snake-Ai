@@ -20,7 +20,7 @@ Genetic algorithm is a guided search algorithm, which is inspired by Darwin's th
 
 ### Flowchart:
 
-<img src="https://github.com/GSAUC3/Snake-Ai/blob/master/img/chart.png">
+<img src="https://github.com/GSAUC3/Snake-Ai/blob/master/img/chart.png" width="364" height="534">
 
 
 ## Neural Network Architecture
