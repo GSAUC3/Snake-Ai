@@ -1,2 +1,4 @@
 *.ipynb
 *.pth
+__pycahce__
+GA/__pycahce__

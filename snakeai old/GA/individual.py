@@ -2,7 +2,7 @@ import random,math
 from .model import Snakenet
 import pygame
 
-scale = 3
+scale = 2
 BODY_SIZE=10
 WIDTH,HEIGHT = 320,240 # 240p
 
@@ -13,13 +13,13 @@ class block:
         self.y = y
        
 class Snake:
-    steps=0
     score = 0
     def __init__(self) -> None:
         self.SCORE = 0
         self.brain = Snakenet()
         self.dir = (0,0)
-        self.deaths= 0
+        self.steps=500
+        
         x,y = random.randint(20,WIDTH-20),random.randint(20,HEIGHT-20)
         self.nagin = [block(i + x,y) for i in range(10)]
 
@@ -29,11 +29,12 @@ class Snake:
         
         self.dir=(0,0)
         self.score=0
-        self.deaths=0
-        self.steps=0 
+        
+        self.steps=500
     
     def update_score(self,time):
-        self.SCORE= (self.score-self.deaths+time*10)
+        self.SCORE= self.score
+            
 
     def draw(self,screen):
         for i,body in enumerate(self.nagin):
@@ -52,13 +53,13 @@ class Snake:
     def moreche_ki(self):
         for i in self.nagin[:-2]:
             if collide(self.nagin[-1],i)<1:
-                self.deaths+=3
+                
                 return True
         if self.nagin[-1].x>(WIDTH-1) or self.nagin[-1].x<1:
-            self.deaths+=3
+            
             return True
         if self.nagin[-1].y>(HEIGHT-1) or self.nagin[-1].y<1:
-            self.deaths+=3
+            
             return True
         return False
                 
@@ -68,7 +69,6 @@ class Snake:
         (0,1) -> down
         (1,0) -> right
         (-1,0) -> left
-
         '''
         x,y=self.nagin[-1].x,self.nagin[-1].y #current location
 
@@ -89,7 +89,6 @@ class Snake:
             (x>foodx),
             (x<foodx),
             ]
-
 
         collision = 0
         for i in self.nagin[:-2]:

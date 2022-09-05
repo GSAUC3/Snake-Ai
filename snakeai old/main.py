@@ -22,24 +22,15 @@ def check(popula):
             print(i)
 
 def main():
-    # score =0
     snakes = Population()
     for i in range(1000):
-        # print('-'*100)
-        
-        # check(snakes.pop)
-
+        score__ =0
         for j,snake in enumerate(snakes.pop):
-           Game(snake,i,j)
-           
-        #    x=
-        #    if score<x:
-        #     score=x
-
+            score = Game(snake,i,j)
+            if score>score__:
+                score__=score
         best_snake = snakes.selection()
-        # print(snakes.pop[0].SCORE)
-        # break
-        print(f'Generation {i+1} Best fitness {best_snake.SCORE}')
+        print(f'Generation {i+1} Best fitness {best_snake.SCORE} Highest Score {score__}')
 
 if __name__=='__main__':
     main()

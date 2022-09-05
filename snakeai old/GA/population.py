@@ -3,7 +3,7 @@ import torch,random,copy
 
 
 class Population:
-    def __init__(self,numpop=100):
+    def __init__(self,numpop=200):
         self.numpop=numpop
         self.pop =  [Snake() for _ in range(self.numpop)]
         self.prev_score=0
@@ -21,20 +21,20 @@ class Population:
         new_pop=[]
         # t=torch.tensor(fitnesses)
         # _,idx = t.topk(10)
-        while len(new_pop)<=90:
-            idx = random.randint(0,89)
-            idx1 = random.randint(0,89)
-            partnera = self.pop[:90][idx]
-            partnerb = self.pop[:90][idx1]
+        while len(new_pop)<=180:
+            idx = random.randint(0,99)
+            idx1 = random.randint(0,99)
+            partnera = self.pop[:100][idx]
+            partnerb = self.pop[:100][idx1]
             child =self.__crossover(partnera,partnerb)
 
             new_pop.append(child)
 
-        new_pop.extend(self.pop[:10])
+        new_pop.extend(self.pop[:20])
         self.pop = new_pop
         return best_snake
 
-    def __crossover(self,ma,baba,mr=0.1):
+    def __crossover(self,ma,baba,mr=0.2):
         child = Snake()
         result = copy.deepcopy(ma.brain)
         with torch.no_grad():    
